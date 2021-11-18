@@ -1,0 +1,14 @@
+
+# copy this file to /lib/systemd/system/
+[Unit]
+Description=Service has monitoring GPIO pins and send message
+Requires=network.target
+
+[Service]
+PIDFile=/var/www/gpio_service/service.pid
+WorkingDirectory=/var/www/gpio_service
+ExecStart=node /var/www/gpio_service/service.js
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,26 @@
+#!/bin/sh
+#
+# Source function library.
+#. /etc/rc.d/init.d/functions
+service_name="GPIO monitoring"
+
+case "$1" in
+	start)
+		echo -n "Starting $service_name services: "
+		systemctl start gpio-mon
+	;;
+	stop)
+		echo -n "Shutting down $service_name services: "
+		systemctl stop gpio-mon
+	;;
+	status)
+		systemctl status gpio-mon
+	;;
+	restart)
+		systemctl restart gpio-mon
+	;;
+	*)
+		echo "Usage: $service_name {start|stop|status|restart"
+		exit 1
+	;;
+esac
